@@ -8,21 +8,21 @@ page = requests.get(url)
 
 soup = BeautifulSoup(page.text, 'lxml')
 
-soup
+#soup
 
 # Tags
 
-soup.head
-soup.div
+#soup.head
+#soup.div
 
 # Navigable Strings
-tag = soup.header.p
+#tag = soup.header.p
 
-tag.string
+#tag.string
 
 # Attributes
-tag = soup.header.a
-tag.attrs0
+#tag = soup.header.a
+#tag.attrs0
 
 
 #####################################
@@ -30,10 +30,10 @@ tag.attrs0
 url = 'https://webscraper.io/test-sites/e-commerce/allinone/phones/touch'
 
 page = requests.get(url)
-page
+#page
 
 soup = BeautifulSoup(page.text, 'lxml')
-soup
+#soup
 
 # find
 #soup.find('header')
@@ -74,35 +74,30 @@ import re
 
 
 # find_all - part 3
-product_name = soup.find_all('a', class_ = 'title')
-product_name
-
-price = soup.find_all('h4', class_ = 'pull-right price')
-price
-
-reviews = soup.find_all('p', class_ = re.compile('pull'))
-reviews
-
-description = soup.find_all('p', class_ = 'description')
-description
-
+product_name = soup.find_all('a', class_ = "title")
+#product_name
 
 product_name_list = []
 for i in product_name:
     name = i.text
     product_name_list.append(name)
 
+price = soup.find_all('h4', class_ = "float-end price card-title pull-right")
+#price
 price_list = []
 for i in price:
     price2 = i.text
     price_list.append(price2)
 
-
+reviews = soup.find_all('p', class_ = re.compile("description card-text"))
+#reviews
 reviews_list = []
 for i in reviews:
     reviews2 = i.text
     reviews_list.append(reviews2)
 
+description = soup.find_all('p', class_ = "float-end review-count")
+#description
 
 descriptions_list = []
 for i in description:
@@ -139,7 +134,7 @@ else:
 
 #box2.find_all('li')[1].text
 
-
+table.to_excel("Productss_details.xlsx",index=False)
 
 
 

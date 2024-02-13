@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+from urllib.parse import urljoin  # Import urljoin function from urllib.parse
 
 url = 'https://www.carpages.ca/used-cars/search/?fueltype_id%5B0%5D=3&fueltype_id%5B1%5D=7'
 
@@ -25,13 +26,13 @@ for i in range(20):
 
         except:
             pass
+
     next_page_url = soup.find('a', class_='nextprev').get('href')
-    page = requests.get(next_page_url)
-    soup = BeautifulSoup(page.text, 'lxml')
+    if next_page_url:
+        next_page_url = urljoin(url, next_page_url)  # Join base URL with the relative URL
+        page = requests.get(next_page_url)
+        soup = BeautifulSoup(page.text, 'lxml')
+    else:
+        break  # Break the loop if there is no next page
 
-
-df.to_csv('~/Scraped-Data/carpages_scraped_data.csv')
-
-
-
-
+df.to_csv("carpages_scraped_data.csv")
