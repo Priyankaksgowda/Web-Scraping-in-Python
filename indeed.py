@@ -79,8 +79,8 @@ from email.mime.multipart import MIMEMultipart
 from email import encoders
 
 #Input the email account that will send the email and who will receiving it
-sender = 'account@gmail.com'
-receiver = 'account@gmail.com'
+sender = 'Priyankaksgowda23@gmail.com'
+receiver = 'Priyankaks.sridhar23@gmail.com'
 
 #Creates the Message, Subject line, From and To
 msg = MIMEMultipart()
@@ -97,6 +97,6 @@ msg.attach(part)
 
 #Will login to your email and actually send the message above to the receiver
 s = smtplib.SMTP_SSL(host = 'smtp.gmail.com', port = 465)
-s.login(user = 'account@gmail.com', password = 'input your password')
+s.login(user = 'Priyankaksgowda23@gmail.com', password = 'Pillsburry@23')
 s.sendmail(sender, receiver, msg.as_string())
 s.quit()

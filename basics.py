@@ -36,41 +36,41 @@ soup = BeautifulSoup(page.text, 'lxml')
 soup
 
 # find
-soup.find('header')
+#soup.find('header')
 
-soup.header.attrs
+#soup.header.attrs
 
-soup.find('div', {'class':'container test-site'})
+#soup.find('div', {'class':'container test-site'})
 
-soup.find('h4', {'class':'pull-right price'})
+#soup.find('h4', {'class':'pull-right price'})
 
 
 # find_all - part 1
-soup.find_all('h4', {'class':'pull-right price'})[6:]
+#soup.find_all('h4', {'class':'pull-right price'})
 
-soup.find_all('a', class_ = 'title')
+#soup.find_all('a', class_ = 'title')
 
-soup.find_all('p', class_ = 'pull-right')
+#soup.find_all('p', class_ = 'pull-right')
 
 
 # find_all - part 2
-soup.find_all(['h4','p','a'])
+#soup.find_all(['h4','p','a'])
 
-soup.find_all(id = True)
+#soup.find_all(id = True)
 
-soup.find_all(string = 'Iphone')
+#soup.find_all(string = 'Iphone')
 
 import re
 
-soup.find_all(string = re.compile('Nok'))
+#soup.find_all(string = re.compile('Nok'))
 
-soup.find_all(string = ['Iphone', 'Nokia 123'])
+#soup.find_all(string = ['Iphone', 'Nokia 123'])
 
-soup.find_all(class_ = re.compile('pull'))
+#soup.find_all(class_ = re.compile('pull'))
 
-soup.find_all('p', class_ = re.compile('pull'))
+#soup.find_all('p', class_ = re.compile('pull'))
 
-soup.find_all('p', class_ = re.compile('pull'), limit = 3)
+#soup.find_all('p', class_ = re.compile('pull'), limit = 3)
 
 
 # find_all - part 3
@@ -113,20 +113,31 @@ import pandas as pd
 
 table = pd.DataFrame({'Product Name':product_name_list, 'Description':descriptions_list,
                      'Price':price_list, 'Reviews':reviews_list})
+print("Product Name List Length:", len(product_name_list))
+print("Price List Length:", len(price_list))
+print("Reviews List Length:", len(reviews_list))
+print("Descriptions List Length:", len(descriptions_list))
 
-# print(table)
+# Create DataFrame only if all lists have the same length
+if all(len(lst) == len(product_name_list) for lst in [price_list, reviews_list, descriptions_list]):
+    table = pd.DataFrame({'Product Name': product_name_list, 'Description': descriptions_list,
+                          'Price': price_list, 'Reviews': reviews_list})
+    print(table)
+else:
+    print("Error: Lists have different lengths.")
+#print(table)
 
 # extracted data from nested HTML tags
-boxes = soup.find_all('div', class_='col-sm-4 col-lg-4 col-md-4')[6]
-boxes
+#boxes = soup.find_all('div', class_='col-sm-4 col-lg-4 col-md-4')[6]
+#boxes
 
-boxes.find('a').text
+#boxes.find('a').text
 
-boxes.find('p', class_='description').text
+#boxes.find('p', class_='description').text
 
-box2 = soup.find_all('ul', class_='nav', id='side-menu')[0]
+#box2 = soup.find_all('ul', class_='nav', id='side-menu')[0]
 
-box2.find_all('li')[1].text
+#box2.find_all('li')[1].text
 
 
 

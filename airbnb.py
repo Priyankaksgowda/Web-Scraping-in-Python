@@ -36,7 +36,7 @@ while True:
     except:
         break
 
-df.to_csv('~/Scraped-Data/airbnb_scraped_data.csv')
+df.to_csv('airbnb_scraped_data.csv')
 
 
 

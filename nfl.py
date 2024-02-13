@@ -28,6 +28,6 @@ for j in table.find_all('tr')[1:]:
 
 print(df)
 
-df.to_csv('~/Scraped-Data/nfl_scraped_data.csv')
+df.to_csv('nfl_scraped_data.csv')
 
 

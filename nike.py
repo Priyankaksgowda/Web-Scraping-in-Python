@@ -1,13 +1,13 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.Chrome.service import Service
 from bs4 import BeautifulSoup
 import pandas as pd
 import time
 
-driver = webdriver.Firefox()
+driver = webdriver.Chrome()
 driver.get('https://www.google.com/')
 
-box = driver.find_element_by_xpath('/html/body/div[1]/div[3]/form/div[2]/div[1]/div[1]/div/div[2]/input')
+box = driver.find_element_by_xpath("""/html/body/ntp-app//div/div[2]/ntp-realbox//div/input""")
 box.send_keys('nike')
 box.send_keys(Keys.ENTER)
 

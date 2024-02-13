@@ -26,6 +26,6 @@ for j in table.find_all('tr')[1:]:
 
 print(df)
 
-df.to_csv('~/Scraped-Data/world_population_scraped_data.csv')
+df.to_csv('world_population_scraped_data.csv')
 
 
